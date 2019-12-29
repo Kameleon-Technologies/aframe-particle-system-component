@@ -114,6 +114,10 @@ AFRAME.registerComponent('particle-system', {
         enabled: {
             type:'boolean',
             default:true
+        },
+        renderOrder: {
+            type: 'number',
+            default: 0
         }
     },
 
@@ -304,6 +308,7 @@ AFRAME.registerComponent('particle-system', {
 
         this.particleGroup.addEmitter(emitter);
         this.particleGroup.mesh.frustumCulled = false;
+        this.particleGroup.mesh.renderOrder = settings.renderOrder;
         this.el.setObject3D('particle-system', this.particleGroup.mesh);
     }
 });
